@@ -20,6 +20,30 @@ namespace CSharp.Controllers
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetValue<string>("ConnectionString")))
             {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT * FROM Users WHERE Id = "+ Request.Query["id"], connection);
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string returnString = string.Empty;
+                        returnString += "Name :" + reader["Name"] + ". ";
+                        returnString += "Description : " + reader["Description"];
+                        return returnString;
+                    }
+                    else
+                    {
+                        return string.Empty;
+                    }
+                }
+            }
+        }
+        [HttpGet]
+        [Route("user")]
+        public string GetNonSensitiveDataById()
+        {
+            using (SqlConnection connection = new SqlConnection(_configuration.GetValue<string>("ConnectionString")))
+            {
                 int id = int.Parse(Request.Query["id"]);
                 connection.Open();
                 SqlCommand command = new SqlCommand("SELECT * FROM Users WHERE Id = " + id, connection);
