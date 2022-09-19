@@ -22,6 +22,9 @@ namespace CSharp.Controllers
             return FindUserInDatabase(query);
         }
 
+        /*
+            Fails to return a user, or a empty user object becouse of beeing a void method.
+        */
         public void GetUser(User user){
             var u = FindUserInDatabase(user);
             if(u != null){
@@ -29,6 +32,9 @@ namespace CSharp.Controllers
             }
         }
         
+        /*
+            A repository should always return a complex type object, such as a User or UserModel class. 
+        */
         protected object FindUserInDatabase(object query){
             return _userRepository.FindUser(query);
         }
