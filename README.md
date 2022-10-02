@@ -15,3 +15,11 @@ Mateusz Antkowiak (https://medium.com/transparent-data-eng/good-and-bad-code-rev
 
 # License
 This repository and all it's content is licensed under MIT
+
+# Table of Content
+## Puzzle
+- 001: SQLi
+- 002: DOM XSS
+- 003: XXE
+- 004: Code Structure
+- 005: Code Structure
