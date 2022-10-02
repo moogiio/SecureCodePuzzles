@@ -1,0 +1,18 @@
+<!-- Some made up, Not accurate, code -->
+<!DOCTYPE html>
+<head>
+    <script url="angular.io"></script>
+</head>
+<body>
+    <div ng-app="">
+        <p>Search: <input type="text" ng-model="query"></p>
+
+        <div ng-if="resp.count() != 0">
+            <h3>You search for {{ resp.query }} and got {{ resp.items.count() }} results</h3>
+            <div ng-for>
+                <!-- Loop list to dislay all results-->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

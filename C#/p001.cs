@@ -16,7 +16,7 @@ namespace CSharp.Controllers
 
         [HttpGet]
         [Route("user")]
-        public string GetNonSensitiveDataById()
+        public string GetDataById()
         {
             using (SqlConnection connection = new SqlConnection(_configuration.GetValue<string>("ConnectionString")))
             {

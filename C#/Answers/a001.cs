@@ -1,12 +1,12 @@
 [HttpGet]
 [Route("user")]
-public string GetNonSensitiveDataById()
+public string GetDataById()
 {
     using (SqlConnection connection = new SqlConnection(_configuration.GetValue<string>("ConnectionString")))
     {
         int id = int.Parse(Request.Query["id"]);
         connection.Open();
-        SqlCommand command = new SqlCommand("SELECT * FROM Users WHERE Id = " + id, connection); // Parse request to an int to prevent SQLi, but still prone to information leakage
+        SqlCommand command = new SqlCommand("SELECT * FROM Users WHERE Id = " + id, connection); // Parse request to an int to prevent SQLi
         using (var reader = command.ExecuteReader())
         {
             if (reader.Read())
@@ -26,12 +26,12 @@ public string GetNonSensitiveDataById()
 
 [HttpGet]
 [Route("userparam")]
-public string GetNonSensitiveDataByNameWithParam()
+public string GetDataWithParam()
 {
     using (SqlConnection connection = new SqlConnection(_configuration.GetValue<string>("ConnectionString")))
     {
         connection.Open();
-        SqlCommand command = new SqlCommand("SELECT * FROM Users WHERE Name = @name", connection); // Parameterize query to prevent SQLi, but still prone to information leakage
+        SqlCommand command = new SqlCommand("SELECT * FROM Users WHERE Name = @name", connection); // Parameterize query to prevent SQLi
         command.Parameters.AddWithValue("@name", Request.Query["name"].ToString());
         using (var reader = command.ExecuteReader())
         {
