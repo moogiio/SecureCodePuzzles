@@ -1,3 +1,7 @@
+/*
+    Puzzle 001 - Find programming errors and the SQL-inject vulnerability
+*/
+
 using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;

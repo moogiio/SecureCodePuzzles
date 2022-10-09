@@ -1,3 +1,7 @@
+/*
+    Puzzle 003 - Find programming errors and External XML Entity vulnerability
+*/
+
 using System.Xml;
 using Microsoft.AspNetCore.Mvc;
 

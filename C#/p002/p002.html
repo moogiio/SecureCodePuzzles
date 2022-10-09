@@ -1,17 +1,21 @@
-<!-- Some made up, Not accurate, code -->
+<!-- Some made up, Not accurate code, just to get the point over -->
 <!DOCTYPE html>
 <head>
     <script url="angular.io"></script>
 </head>
 <body>
-    <div ng-app="">
+    <div ng-app="app">
         <p>Search: <input type="text" ng-model="query"></p>
+        <input type="submit" ng-onclick="search()">Search</input>
 
-        <div ng-if="resp.count() != 0">
-            <h3>You search for {{ resp.query }} and got {{ resp.items.count() }} results</h3>
-            <div ng-for>
+        <div ng-if="response.items.count() > 0">
+            <h3>You search for {{ response.query }} and got {{ response.items.count() }} results</h3>
+            <div ng-for="response.items">
                 <!-- Loop list to dislay all results-->
             </div>
+        </div>
+        <div ng-else>
+            <p>Search result was empty</p>
         </div>
     </div>
 </body>

@@ -1,3 +1,7 @@
+/*
+    Puzzle 004 - Find the errors
+*/
+
 using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -20,7 +24,7 @@ namespace CSharp.Controllers
         }
 
         public UserModel GetUser(User user){
-            var u = FindUserInDatabase(user)
+            var u = FindUserInDatabase(user);
             if(u != null){
                 return u as UserModel;
             }
