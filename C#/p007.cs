@@ -1,5 +1,5 @@
 /*
-    Puzzle 007 - Make this code better
+    Puzzle 007 - Make this code better by applying a certain programming technique
 */
 
 namespace CSharp.Controllers
@@ -7,7 +7,7 @@ namespace CSharp.Controllers
     public class CalculateController : Controller
     {
         public int Calculate(string query){
-            //query = "4 6 add"
+            //query = "4,6,add"
             var operatür = query.Split(',')[2];
             int result = 0;
             switch (operatür)

@@ -1,3 +1,7 @@
+/*
+    Puzzle 004 - IS this really the best way to write code? 
+                 Come up with a better solution.
+*/
 public class Class1
 {
   public decimal Calculate(decimal amount, int type, int years)
