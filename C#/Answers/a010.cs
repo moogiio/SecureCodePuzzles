@@ -1,7 +1,3 @@
-/*
-    Puzzle 010 - Is all good in here?
-*/
-
 namespace CSharp.Controllers
 {
     public class UserController : Controller
@@ -11,17 +7,19 @@ namespace CSharp.Controllers
         */
         [HttpGet]
         [Authorize]
-        public IHttpActionResult GetUserProfile(int id)
+        public IHttpActionResult<UserDTO> GetUserProfile(int id)
         {
             UserProfile uProfile = db.Users.FirstOrDefault((p) => p.Id == id);
             if (uProfile == null)
             {
                 return NotFound();
             }
-            return Ok(uProfile);
+            UserDTO userDto = uProfile.ToUserDTO();
+            return Ok(userDto);
         }
     }
 
+    /* This class corresponds with the database table User and should only be used internally, and not sent out to the clients*/
     public class UserProfile{
         public int Id { get; set; }
         public string Username { get; set; }
@@ -35,5 +33,11 @@ namespace CSharp.Controllers
         public string Lastname { get; set; }
         public string SecretQuestion { get; set; }
         public string SecretAnswer { get; set; }
+    }
+
+    /* A DTO should be used to filter out and controll the flow of what data goes where */
+    public class UserProfileDTO{
+        public string Username { get; set; }
+        public string Homepage { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace CSharp.Controllers
         public SearchDTO Search(string query)
         {
             /*
-                client input 'query' is checked and sanitized before used in a db search query
+                client input 'query' have been checked and was sanitized before it was used as a db search query
             */
             var cleanQuery = SanitizeInput(query);
             var search = new SearchDTO(){
