@@ -11,9 +11,9 @@ namespace CSharp.Controllers
         */
         [HttpGet]
         [Authorize]
-        public IHttpActionResult GetUserProfile(int id)
+        public IHttpActionResult GetUserProfile(string username)
         {
-            UserProfile uProfile = db.Users.FirstOrDefault((p) => p.Id == id);
+            UserProfile uProfile = db.Users.FirstOrDefault((p) => p.Username == username);
             if (uProfile == null)
             {
                 return NotFound();

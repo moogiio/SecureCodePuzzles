@@ -7,9 +7,9 @@ namespace CSharp.Controllers
         */
         [HttpGet]
         [Authorize]
-        public IHttpActionResult<UserDTO> GetUserProfile(int id)
+        public IHttpActionResult<UserDTO> GetUserProfile(string username)
         {
-            UserProfile uProfile = db.Users.FirstOrDefault((p) => p.Id == id);
+            UserProfile uProfile = db.Users.FirstOrDefault((p) => p.Username == username);
             if (uProfile == null)
             {
                 return NotFound();
@@ -19,7 +19,7 @@ namespace CSharp.Controllers
         }
     }
 
-    /* This class corresponds with the database table User and should only be used internally, and not sent out to the clients*/
+    /* This class corresponds with the database table 'User' and should only be used internally, and not sent out to any clients*/
     public class UserProfile{
         public int Id { get; set; }
         public string Username { get; set; }

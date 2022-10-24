@@ -33,7 +33,7 @@ namespace CSharp.Controllers
         }
         
         /*
-            A repository should return a complex type object, such as a User, UserModel or  UserDTO class.
+            A repository should return a complex type object, such as a User or UserModel.
         */
         protected object FindUserInDatabase(object query){
             return _userRepository.FindUser(query);
