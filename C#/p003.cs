@@ -7,7 +7,7 @@ namespace CSharp.Controllers
         public static string ParseXmlDocument()
         {
             var xmlDocument = new XmlDocument();
-            xmlDocument.XmlResolver = new XmlUrlResolver(); // XmlDocuments becomes vulerable when initializing an XmlUrlResolver.
+            xmlDocument.XmlResolver = new XmlUrlResolver();
             xmlDocument.LoadXml(_xml);
             return xmlDocument.InnerText;
         }
