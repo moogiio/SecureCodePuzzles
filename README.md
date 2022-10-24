@@ -1,4 +1,4 @@
-https://img.shields.io/github/issues/moogiio/SecureCodePuzzles?style=for-the-badge
+[![Forks](https://img.shields.io/github/forks/moogiio/SecureCodePuzzles?style=for-the-badge)](https://github.com/moogiio/SecureCodePuzzles)
 # Under construction
 
 ## SecureCodePuzzles
