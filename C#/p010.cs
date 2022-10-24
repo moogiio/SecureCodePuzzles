@@ -6,9 +6,7 @@ namespace CSharp.Controllers
 {
     public class UserController : Controller
     {
-        /*
-            Let's a logged in user look at another users profile
-        */
+        // Let's a logged in user look at another users profile
         [HttpGet]
         [Authorize]
         public IHttpActionResult GetUserProfile(string username)

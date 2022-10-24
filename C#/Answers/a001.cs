@@ -1,3 +1,7 @@
+/*
+    Answer 01
+*/
+
 [HttpGet]
 [Route("user")]
 public string GetDataById()
@@ -23,6 +27,10 @@ public string GetDataById()
         }
     }
 }
+
+/*
+    Answer 2
+*/
 
 [HttpGet]
 [Route("userparam")]

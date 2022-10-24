@@ -1,5 +1,5 @@
 /*
-    Puzzle 001 - Find programming errors and the SQL-inject vulnerability
+    Puzzle 001 - Find the SQL-inject vulnerability
 */
 
 using System.Data.SqlClient;

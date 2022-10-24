@@ -1,6 +1,5 @@
 /*
     Puzzle 004 - IS this really the best way to write code? 
-                 Come up with a better solution.
 */
 public class Class1
 {
