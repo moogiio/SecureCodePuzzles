@@ -19,6 +19,7 @@ namespace CSharp.Controllers
         }
     }
 
+    // Make use of Attributes when it comes to model classes
     public class UserDTO{
         [Required]
         [StringLength(24, MinimumLength = 3, ErrorMessage = "Username must be between 4 and 24 characters in length.")]
