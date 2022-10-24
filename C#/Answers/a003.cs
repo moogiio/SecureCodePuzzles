@@ -1,27 +1,33 @@
-using System.Xml;
-using Microsoft.AspNetCore.Mvc;
-
 namespace CSharp.Controllers
 {
-    [Route("api/xxe")]
-    [ApiController]
-    public class XXEController : ControllerBase
+    public class XxeController : Controller
     {
-        [HttpPost]
-        public string ResolveXML(string xml)
-        {
-            // XML string comming from client
-            // "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>" +
-            // "<!DOCTYPE foo [<!ELEMENT foo ANY >" +
-            // "<!ENTITY xxe SYSTEM \"file:///c:/users/Administrator/hårddisken/internet.txt\">]>" +
-            // "<foo>&xxe;</foo>";
+        private static string _xml = "<?xml version=\"1.0\" ?><!DOCTYPE foo [<!ENTITY xxe SYSTEM \"_EXTERNAL_FILE_\">]> <product id=\"1\"> <description>&xxe;</description></product>";
 
-            XmlDocument xmlDoc = new XmlDocument
+        public static string ParseXmlDocument()
+        {
+            var xmlDocument = new XmlDocument();
+            xmlDocument.XmlResolver = new XmlUrlResolver(); // XmlDocuments becomes vulerable when initializing an XmlUrlResolver.
+            xmlDocument.LoadXml(_xml);
+            return xmlDocument.InnerText;
+        }
+
+        public static string ParseXmlReader(){
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.DtdProcessing = DtdProcessing.Prohibit;
+            settings.MaxCharactersFromEntities = 6000;
+            settings.DtdProcessing = DtdProcessing.Parse; // XmlReader becomes vulernable if DtdProcessing is set to Parse
+            settings.XmlResolver = new XmlUrlResolver(); // and XmlResolver is initialized
+
+            using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
             {
-                XmlResolver = null // Set XmlResolver to null so that DTD is inactive!
-            };
-            xmlDoc.LoadXml(xml);
-            return xmlDoc.InnerText;
+                XmlReader reader = XmlReader.Create(stream, settings);
+
+                var xmlDocument = new XmlDocument();
+                xmlDocument.XmlResolver = new XmlUrlResolver();
+                xmlDocument.Load(reader);
+                return xmlDocument.InnerText;
+            }
         }
     }
-}
+}   

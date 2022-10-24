@@ -1,33 +1,33 @@
-/*
-    Puzzle 003 - Find programming errors and External XML Entity vulnerability
-*/
-
-using System.Xml;
-using Microsoft.AspNetCore.Mvc;
-
 namespace CSharp.Controllers
 {
-    [Route("api/xxe")]
-    [ApiController]
-    public class XXEController : ControllerBase
+    public class XxeController : Controller
     {
-        [HttpPost]
-        public XDocument StringToXml(string input)
-        {
-            /*
-                <?xml version="1.0" encoding="ISO-8859-1"?>
-                <!DOCTYPE foo [
-                <!ELEMENT foo ANY >
-                <!ENTITY % xxe SYSTEM "http://internal.service/secret_pass.txt" >
-                ]>
-                <foo>&xxe;</foo>
-            */
+        private static string _xml = "<?xml version=\"1.0\" ?><!DOCTYPE foo [<!ENTITY xxe SYSTEM \"_EXTERNAL_FILE_\">]> <product id=\"1\"> <description>&xxe;</description></product>";
 
-            using(StringReader tr = new StringReader(input))
+        public static string ParseXmlDocument()
+        {
+            var xmlDocument = new XmlDocument();
+            xmlDocument.XmlResolver = new XmlUrlResolver(); // XmlDocuments becomes vulerable when initializing an XmlUrlResolver.
+            xmlDocument.LoadXml(_xml);
+            return xmlDocument.InnerText;
+        }
+
+        public static string ParseXmlReader(){
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.DtdProcessing = DtdProcessing.Prohibit;
+            settings.MaxCharactersFromEntities = 6000;
+            settings.DtdProcessing = DtdProcessing.Parse;
+            settings.XmlResolver = new XmlUrlResolver();
+
+            using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(_xml)))
             {
-                XDocument doc = XDocument.Load(tr);
-                return doc;
+                XmlReader reader = XmlReader.Create(stream, settings);
+
+                var xmlDocument = new XmlDocument();
+                xmlDocument.XmlResolver = new XmlUrlResolver();
+                xmlDocument.Load(reader);
+                return xmlDocument.InnerText;
             }
         }
     }
-}
+}   
