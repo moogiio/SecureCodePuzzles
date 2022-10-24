@@ -1,20 +1,20 @@
 <!-- Some made up, Not accurate code, just to get the point over -->
 <!DOCTYPE html>
 <head>
-    <script url="angular.io"></script>
+    <script url="somejavascriptframework.js"></script>
 </head>
 <body>
-    <div ng-app="app">
-        <p>Search: <input type="text" ng-model="query"></p>
-        <input type="submit" ng-onclick="search()">Search</input>
+    <div app="app">
+        <p>Search: <input type="text" model="query"></p>
+        <input type="submit" onclick="search()">Search</input>
 
-        <div ng-if="response.items.count() > 0">
+        <div if="response.items.count() > 0">
             <h3>You search for {{ response.query }} and got {{ response.items.count() }} results</h3>
-            <div ng-for="response.items">
+            <div for="response.items">
                 <!-- Loop list to dislay all results-->
             </div>
         </div>
-        <div ng-else>
+        <div else>
             <p>Search result was empty</p>
         </div>
     </div>
