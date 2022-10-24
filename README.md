@@ -1,3 +1,4 @@
+https://img.shields.io/github/issues/moogiio/SecureCodePuzzles?style=for-the-badge
 # Under construction
 
 ## SecureCodePuzzles
