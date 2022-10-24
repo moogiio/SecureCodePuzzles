@@ -1,8 +1,8 @@
-<p style="text-align: center;">
+
 [![Forks](https://img.shields.io/github/forks/moogiio/SecureCodePuzzles?style=for-the-badge)](https://github.com/moogiio/SecureCodePuzzles/network/members)
 [![Issues](https://img.shields.io/github/issues/moogiio/SecureCodePuzzles?color=%23133673&style=for-the-badge)](https://github.com/moogiio/SecureCodePuzzles/issues)
 [![Stars](https://img.shields.io/github/stars/moogiio/SecureCodePuzzles?color=dddd33&style=for-the-badge)](https://github.com/moogiio/SecureCodePuzzles/stargazers)
-</p>
+
 # Under construction
 
 ## SecureCodePuzzles
