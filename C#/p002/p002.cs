@@ -28,7 +28,7 @@ namespace CSharp.Controllers
             };
 
             try{
-                search.Items = _db.FindItems(cleanQuery); //Returns list of found items or empty list
+                search.Items = _db.Items.FindItems(cleanQuery); //Returns list of found items or empty list
             }catch(Exception e){
                 throw e;
             }

@@ -30,7 +30,7 @@ namespace CSharp.Controllers
             if(user.Username.Contains(_illegalCharacters)){
                 isUserValid = !isUserValid;
             }
-            // Check so that password does not caintain any illegal characters
+            // Check so that password does not contain any illegal characters
             if(user.Password.Contains(_illegalCharacters) || user.Password.Length > _maximumLength || user.Password.Length < _minimumLength){
                 isUserValid = !isUserValid;
             }

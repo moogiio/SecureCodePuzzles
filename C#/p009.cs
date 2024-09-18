@@ -7,15 +7,19 @@ namespace CSharp.Controllers
     [Authorize(Role = "Customer")]
     public class BrokenController : Controller
     {
+        public BrokenController(DbContext db)
+        {
+            _db = db;
+        }
         [HttpGet]
         public IHttpActionResult GetBrokenRecord(int id)
         {
-            var record = records.FirstOrDefault((p) => p.Id == id);
-            if (record == null)
+            var userRecord = _db.Records.FirstOrDefault((record) => record.Id == id);
+            if (userRecord == null)
             {
                 return NotFound();
             }
-            return Ok(record);
+            return Ok(userRecord);
         }
     }
 }
